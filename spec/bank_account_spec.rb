@@ -1,3 +1,4 @@
+BankAccount = Class.new
 describe 'Bank Account' do
   example 'opening a bank account with zero balance' do
     pending('TODO')
