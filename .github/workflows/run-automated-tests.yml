@@ -1,0 +1,13 @@
+name: run-automated-tests
+run-name: ${{ github.actor }} is using GitHub Actions to run tests
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/ruby@v3
+        with:
+          node-version: '3.2.0'
+      - run: bundle install
+      - run: bundle exec rspec -cfd
