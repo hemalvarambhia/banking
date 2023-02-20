@@ -1,6 +1,8 @@
 require 'date'
+BankAccountSetUpIncorrectly = Class.new(StandardError)
 class BankAccount
   def initialize(starting_balance:)
+    raise BankAccountSetUpIncorrectly.new('Cannot open with a negative deposit') if starting_balance < 0
     @initial_balance = starting_balance
   end
 
@@ -61,5 +63,7 @@ describe 'Bank Account' do
     expect(statement).to eq(expected_statement)
   end
 
-  example 'cannot open a bank account with a negative initial deposit'
+  example 'cannot open a bank account with a negative initial deposit' do
+    expect { BankAccount.new(starting_balance: -187) }.to raise_error(BankAccountSetUpIncorrectly, 'Cannot open with a negative deposit')
+  end
 end
