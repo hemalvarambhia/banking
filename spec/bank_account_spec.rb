@@ -19,7 +19,6 @@ class BankAccount
   end
 
   def print_statement
-    transaction = Transaction.new(date: Date.today, amount: @initial_balance)
     if @initial_balance.zero?
       'Date Amount Balance'
     else
