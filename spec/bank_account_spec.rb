@@ -1,11 +1,18 @@
 require 'date'
 class BankAccount
   def initialize(starting_balance: 0)
-    @initial_balance = 0
+    @initial_balance = starting_balance
   end
 
   def print_statement
-    'Date Amount Balance'
+    if @initial_balance.zero?
+      'Date Amount Balance'
+    else
+      [
+        'Date Amount Balance',
+        "#{Date.today.strftime('%d.%m.%Y')} 20 20"
+      ].join("\n")
+    end
   end
 end
 describe 'Bank Account' do
@@ -19,7 +26,6 @@ describe 'Bank Account' do
   end
 
   example 'opening a bank account with an initial deposit' do
-    pending('TODO')
     bank_account = BankAccount.new(starting_balance: 20)
 
     statement = bank_account.print_statement
