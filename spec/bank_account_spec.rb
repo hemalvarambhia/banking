@@ -12,9 +12,9 @@ class Transaction
 end
 BankAccountSetUpIncorrectly = Class.new(StandardError)
 class BankAccount
-  def initialize(starting_balance:)
-    raise BankAccountSetUpIncorrectly.new('Cannot open with a negative deposit') if starting_balance < 0
-    @initial_balance = starting_balance
+  def initialize(initial_deposit:)
+    raise BankAccountSetUpIncorrectly.new('Cannot open with a negative deposit') if initial_deposit < 0
+    @initial_balance = initial_deposit
   end
 
   def print_statement
@@ -31,7 +31,7 @@ class BankAccount
 end
 describe 'Bank Account' do
   example 'opening a bank account with zero balance' do
-    bank_account = BankAccount.new(starting_balance: 0)
+    bank_account = BankAccount.new(initial_deposit: 0)
 
     statement = bank_account.print_statement
 
@@ -40,7 +40,7 @@ describe 'Bank Account' do
   end
 
   example 'opening a bank account with an initial deposit' do
-    bank_account = BankAccount.new(starting_balance: 20)
+    bank_account = BankAccount.new(initial_deposit: 20)
 
     statement = bank_account.print_statement
 
@@ -52,7 +52,7 @@ describe 'Bank Account' do
   end
 
   example 'opening a bank account with any initial deposit' do
-    bank_account = BankAccount.new(starting_balance: 111)
+    bank_account = BankAccount.new(initial_deposit: 111)
 
     statement = bank_account.print_statement
 
@@ -64,7 +64,7 @@ describe 'Bank Account' do
   end
 
   example 'opening a bank account with any initial deposit that is not a whole amount' do
-    bank_account = BankAccount.new(starting_balance: 111.12)
+    bank_account = BankAccount.new(initial_deposit: 111.12)
 
     statement = bank_account.print_statement
 
@@ -76,6 +76,6 @@ describe 'Bank Account' do
   end
 
   example 'cannot open a bank account with a negative initial deposit' do
-    expect { BankAccount.new(starting_balance: -187) }.to raise_error(BankAccountSetUpIncorrectly, 'Cannot open with a negative deposit')
+    expect { BankAccount.new(initial_deposit: -187) }.to raise_error(BankAccountSetUpIncorrectly, 'Cannot open with a negative deposit')
   end
 end
