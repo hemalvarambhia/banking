@@ -15,6 +15,7 @@ class BankAccount
   def initialize(initial_deposit:)
     raise BankAccountSetUpIncorrectly.new('Cannot open with a negative deposit') if initial_deposit < 0
     @initial_balance = initial_deposit
+    @transaction = Transaction.new(date: Date.today, amount: initial_deposit)
   end
 
   def print_statement
@@ -24,7 +25,7 @@ class BankAccount
     else
       [
         'Date Amount Balance',
-        "#{transaction.to_s} #{@initial_balance}"
+        "#{@transaction.to_s} #{@initial_balance}"
       ].join("\n")
     end
   end
