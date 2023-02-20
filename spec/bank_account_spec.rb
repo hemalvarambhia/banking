@@ -49,5 +49,17 @@ describe 'Bank Account' do
     expect(statement).to eq(expected_statement)
   end
 
+  example 'opening a bank account with any initial deposit that is not a whole amount' do
+    bank_account = BankAccount.new(starting_balance: 111.12)
+
+    statement = bank_account.print_statement
+
+    expected_statement = [
+      'Date Amount Balance',
+      "#{Date.today.strftime('%d.%m.%Y')} 111.12 111.12"
+    ].join("\n")
+    expect(statement).to eq(expected_statement)
+  end
+
   example 'cannot open a bank account with a negative initial deposit'
 end
