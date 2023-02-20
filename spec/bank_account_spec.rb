@@ -10,7 +10,7 @@ class BankAccount
     else
       [
         'Date Amount Balance',
-        "#{Date.today.strftime('%d.%m.%Y')} 20 20"
+        "#{Date.today.strftime('%d.%m.%Y')} #{@initial_balance} #{@initial_balance}"
       ].join("\n")
     end
   end
@@ -33,6 +33,18 @@ describe 'Bank Account' do
     expected_statement = [
       'Date Amount Balance',
       "#{Date.today.strftime('%d.%m.%Y')} 20 20"
+    ].join("\n")
+    expect(statement).to eq(expected_statement)
+  end
+
+  example 'opening a bank account with any initial deposit' do
+    bank_account = BankAccount.new(starting_balance: 111)
+
+    statement = bank_account.print_statement
+
+    expected_statement = [
+      'Date Amount Balance',
+      "#{Date.today.strftime('%d.%m.%Y')} 111 111"
     ].join("\n")
     expect(statement).to eq(expected_statement)
   end
