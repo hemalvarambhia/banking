@@ -1,5 +1,15 @@
 require 'date'
 require 'ostruct'
+class Transaction
+  def initialize(date:, amount:)
+    @date = date
+    @amount = amount
+  end
+
+  def to_s
+    "#{@date.strftime('%d.%m.%Y')} #{@amount}"
+  end
+end
 BankAccountSetUpIncorrectly = Class.new(StandardError)
 class BankAccount
   def initialize(starting_balance:)
@@ -8,13 +18,13 @@ class BankAccount
   end
 
   def print_statement
-    transaction = OpenStruct.new(date: Date.today, amount: @initial_balance)
+    transaction = Transaction.new(date: Date.today, amount: @initial_balance)
     if @initial_balance.zero?
       'Date Amount Balance'
     else
       [
         'Date Amount Balance',
-        "#{transaction.date.strftime('%d.%m.%Y')} #{transaction.amount} #{@initial_balance}"
+        "#{transaction.to_s} #{@initial_balance}"
       ].join("\n")
     end
   end
