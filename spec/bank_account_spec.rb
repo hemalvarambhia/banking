@@ -1,6 +1,6 @@
 require 'date'
 class BankAccount
-  def initialize(starting_balance: 0)
+  def initialize(starting_balance:)
     @initial_balance = starting_balance
   end
 
@@ -17,7 +17,7 @@ class BankAccount
 end
 describe 'Bank Account' do
   example 'opening a bank account with zero balance' do
-    bank_account = BankAccount.new
+    bank_account = BankAccount.new(starting_balance: 0)
 
     statement = bank_account.print_statement
 
