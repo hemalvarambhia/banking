@@ -19,11 +19,12 @@ class BankAccount
   end
 
   def print_statement
+    column_titles = 'Date Amount Balance'
     if @initial_balance.zero?
-      'Date Amount Balance'
+      column_titles
     else
       [
-        'Date Amount Balance',
+        column_titles,
         "#{@transaction.to_s} #{@initial_balance}"
       ].join("\n")
     end
