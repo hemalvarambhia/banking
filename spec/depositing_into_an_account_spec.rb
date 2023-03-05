@@ -23,6 +23,19 @@ describe 'Bank Account' do
       expect(account.current_balance).to eq(50)
     end
 
+    it 'writes the deposit transaction to the bank statement' do
+      pending('TODO')
+      account = BankAccount.new(initial_deposit: 0)
+
+      account.deposit(50)
+
+      expected_statement = [
+        'Date Amount Balance',
+        "#{Date.today.strftime('%d.%m.%Y')} 50 50"
+      ].join("\n")
+      expect(account.print_statement).to eq(expected_statement)
+    end
+
     it 'does not allow a negative amount to be deposited into the account'
   end
 end
