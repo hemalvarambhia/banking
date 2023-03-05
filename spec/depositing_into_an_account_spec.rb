@@ -1,5 +1,3 @@
-require 'date'
-require 'ostruct'
 require_relative '../lib/bank_account'
 
 describe 'Bank Account' do
