@@ -1,6 +1,7 @@
 require 'date'
 require 'ostruct'
 class Transaction
+  attr_reader :amount
   def initialize(date:, amount:)
     @date = date
     @amount = amount
@@ -31,7 +32,7 @@ class BankAccount
     else
       [
         column_titles,
-        "#{@transactions.last.to_s} #{@current_balance}"
+        "#{@transactions.last.to_s} #{@transactions.last.amount}"
       ].join("\n")
     end
   end
