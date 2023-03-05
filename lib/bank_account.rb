@@ -17,7 +17,8 @@ class BankAccount
   def initialize(initial_deposit:)
     raise BankAccountSetUpIncorrectly.new('Cannot open with a negative deposit') if initial_deposit < 0
     @current_balance = initial_deposit
-    @transactions = [ Transaction.new(date: Date.today, amount: initial_deposit) ]
+    @transactions = []
+    @transactions << Transaction.new(date: Date.today, amount: initial_deposit) if initial_deposit > 0
   end
 
   def deposit(amount)
