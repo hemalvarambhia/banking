@@ -26,6 +26,10 @@ class BankAccount
     @transactions << Transaction.new(date: Date.today, amount: amount) if amount > 0
   end
 
+  def current_balance
+    @current_balance = @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
+  end
+
   def print_statement
     column_titles = 'Date Amount Balance'
     if @transactions.empty?
