@@ -13,21 +13,18 @@ class Transaction
 end
 BankAccountSetUpIncorrectly = Class.new(StandardError)
 class BankAccount
-  attr_reader :current_balance
   def initialize(initial_deposit:)
     raise BankAccountSetUpIncorrectly.new('Cannot open with a negative deposit') if initial_deposit < 0
-    @current_balance = initial_deposit
     @transactions = []
     @transactions << Transaction.new(date: Date.today, amount: initial_deposit) if initial_deposit > 0
   end
 
   def deposit(amount)
-    @current_balance = @current_balance + amount
     @transactions << Transaction.new(date: Date.today, amount: amount) if amount > 0
   end
 
   def current_balance
-    @current_balance = @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
+    @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
   end
 
   def print_statement
