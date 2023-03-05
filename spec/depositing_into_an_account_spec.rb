@@ -8,6 +8,11 @@ describe 'Bank Account' do
       account.deposit(0)
 
       expect(account.current_balance).to eq(50)
+      expected_statement = [
+        'Date Amount Balance',
+        "#{Date.today.strftime('%d.%m.%Y')} 50 50"
+      ].join("\n")
+      expect(account.print_statement).to eq(expected_statement)
     end
 
     it 'increases the balance on the account when a non-zero amount is deposited'
