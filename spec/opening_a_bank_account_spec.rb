@@ -18,6 +18,10 @@ class BankAccount
     @transaction = Transaction.new(date: Date.today, amount: initial_deposit)
   end
 
+  def deposit(amount)
+
+  end
+
   def print_statement
     column_titles = 'Date Amount Balance'
     if @initial_balance.zero?
@@ -30,6 +34,7 @@ class BankAccount
     end
   end
 end
+
 describe 'Bank Account' do
   example 'opening a bank account with zero balance' do
     bank_account = BankAccount.new(initial_deposit: 0)
