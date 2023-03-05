@@ -24,7 +24,6 @@ describe 'Bank Account' do
     end
 
     it 'writes the deposit transaction to the bank statement' do
-      pending('TODO')
       account = BankAccount.new(initial_deposit: 0)
 
       account.deposit(50)

@@ -21,6 +21,7 @@ class BankAccount
 
   def deposit(amount)
     @current_balance = @current_balance + amount
+    @transactions << Transaction.new(date: Date.today, amount: amount) if amount > 0
   end
 
   def print_statement
@@ -30,7 +31,7 @@ class BankAccount
     else
       [
         column_titles,
-        "#{@transactions.first.to_s} #{@current_balance}"
+        "#{@transactions.last.to_s} #{@current_balance}"
       ].join("\n")
     end
   end
