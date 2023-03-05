@@ -28,7 +28,7 @@ class BankAccount
 
   def print_statement
     column_titles = 'Date Amount Balance'
-    if @current_balance.zero?
+    if @transactions.empty?
       column_titles
     else
       [
