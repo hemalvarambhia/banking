@@ -15,7 +15,13 @@ describe 'Bank Account' do
       expect(account.print_statement).to eq(expected_statement)
     end
 
-    it 'increases the balance on the account when a non-zero amount is deposited'
+    it 'increases the balance on the account when a non-zero amount is deposited' do
+      account = BankAccount.new(initial_deposit: 0)
+
+      account.deposit(50)
+
+      expect(account.current_balance).to eq(50)
+    end
 
     it 'does not allow a negative amount to be deposited into the account'
   end

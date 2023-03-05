@@ -19,7 +19,7 @@ class BankAccount
   end
 
   def deposit(amount)
-
+    @initial_balance = @initial_balance + amount
   end
 
   def current_balance
