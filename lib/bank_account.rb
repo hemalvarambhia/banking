@@ -1,5 +1,4 @@
 require 'date'
-require 'ostruct'
 class Transaction
   attr_reader :amount
   def initialize(date:, amount:)
