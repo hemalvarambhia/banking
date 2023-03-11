@@ -20,6 +20,8 @@ class BankAccount
   end
 
   def deposit(amount)
+    raise StandardError.new('Cannot deposit a negative amount') if amount < 0
+
     @transactions << Transaction.new(date: Date.today, amount: amount) if amount > 0
   end
 
