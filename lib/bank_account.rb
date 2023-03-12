@@ -15,7 +15,7 @@ class BankAccount
   end
 
   def withdraw(amount)
-
+    @transactions << Transaction.new(date: Date.today, amount: -amount)
   end
 
   def current_balance
