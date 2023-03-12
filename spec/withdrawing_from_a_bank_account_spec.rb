@@ -25,5 +25,5 @@ describe 'Withdrawing from a bank account' do
 
   example 'becoming overdrawn'
 
-  it 'writes the withdrawal transaction to the bank statment'
+  it 'writes the withdrawal transaction to the bank statement'
 end
