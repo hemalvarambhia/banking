@@ -1,15 +1,5 @@
 require 'date'
-class Transaction
-  attr_reader :amount
-  def initialize(date:, amount:)
-    @date = date
-    @amount = amount
-  end
-
-  def to_s
-    "#{@date.strftime('%d.%m.%Y')} #{@amount}"
-  end
-end
+require 'transaction'
 BankAccountSetUpIncorrectly = Class.new(StandardError)
 class BankAccount
   def initialize(initial_deposit:)
