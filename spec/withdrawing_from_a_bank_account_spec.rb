@@ -19,4 +19,6 @@ describe 'Withdrawing from a bank account' do
   example 'withdrawing a negative amount from a bank account'
 
   example 'becoming overdrawn'
+
+  it 'writes the withdrawal transaction to the bank statment'
 end
