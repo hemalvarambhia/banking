@@ -24,6 +24,10 @@ class BankAccount
     @transactions << Transaction.new(date: Date.today, amount: amount) if amount > 0
   end
 
+  def withdraw(amount)
+
+  end
+
   def current_balance
     @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
   end
