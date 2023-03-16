@@ -15,6 +15,8 @@ class BankAccount
   end
 
   def withdraw(amount)
+    raise StandardError.new('Cannot withdraw a negative amount of money') if amount < 0
+
     @transactions << Transaction.new(date: Date.today, amount: -amount)
   end
 
