@@ -24,5 +24,15 @@ describe 'Withdrawing from a bank account' do
 
   example 'becoming overdrawn'
 
-  it 'writes the withdrawal transaction to the bank statement'
+  it 'writes the withdrawal transaction to the bank statement' do
+    account = BankAccount.new(initial_deposit: 100)
+
+    account.withdraw(50)
+
+    expected_statement = [
+      'Date Amount Balance',
+      "#{Date.today.strftime('%d.%m.%Y')} -50 50"
+    ].join("\n")
+    expect(account.print_statement).to eq(expected_statement)
+  end
 end

@@ -31,7 +31,7 @@ class BankAccount
     else
       [
         column_titles,
-        "#{@transactions.last.to_s} #{@transactions.last.amount}"
+        "#{@transactions.last.to_s} #{current_balance}"
       ].join("\n")
     end
   end
