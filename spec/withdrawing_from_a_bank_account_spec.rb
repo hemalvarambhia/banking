@@ -31,7 +31,6 @@ describe 'Withdrawing from a bank account' do
   end
 
   example 'becoming overdrawn past the overdraft limit' do
-    pending('TODO')
     overdrawn_account = BankAccount.new(initial_deposit: 100, overdraft_limit: -50)
 
     expect { overdrawn_account.withdraw(200) }.to raise_error('Account is past its overdraft limit')
