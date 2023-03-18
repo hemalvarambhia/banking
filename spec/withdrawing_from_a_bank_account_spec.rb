@@ -23,7 +23,7 @@ describe 'Withdrawing from a bank account' do
   end
 
   example 'becoming overdrawn' do
-    overdrawn_account = BankAccount.new(initial_deposit: 100)
+    overdrawn_account = BankAccount.new(initial_deposit: 100, overdraft_limit: -2000)
 
     overdrawn_account.withdraw(200)
 
