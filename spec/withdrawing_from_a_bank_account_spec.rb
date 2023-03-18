@@ -22,7 +22,13 @@ describe 'Withdrawing from a bank account' do
     expect { account.withdraw(-131) }.to raise_error('Cannot withdraw a negative amount of money')
   end
 
-  example 'becoming overdrawn'
+  example 'becoming overdrawn' do
+    overdrawn_account = BankAccount.new(initial_deposit: 100)
+
+    overdrawn_account.withdraw(200)
+
+    expect(overdrawn_account.current_balance).to eq(-100)
+  end
 
   it 'writes the withdrawal transaction to the bank statement' do
     account = BankAccount.new(initial_deposit: 100)
