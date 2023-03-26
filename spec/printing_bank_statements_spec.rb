@@ -1,6 +1,6 @@
 describe 'Printing bank statements' do
   example 'when only one deposit is made' do
-    bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: 2000)
+    bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
     bank_account.deposit(50)
 
     statement = bank_account.print_statement
