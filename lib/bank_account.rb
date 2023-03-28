@@ -29,7 +29,7 @@ class BankAccount
   def transaction_lines
     @transactions.to_enum.with_index.map do |t, _|
       running_total = @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
-      t.to_s + " " + "#{running_total}"
+      print_transaction(t) + " " + "#{running_total}"
     end.join
   end
 
@@ -40,7 +40,7 @@ class BankAccount
     else
       [
         column_titles,
-        "#{@transactions.last.to_s} #{current_balance}"
+        "#{print_transaction(@transactions.last)} #{current_balance}"
       ].join("\n")
     end
   end
@@ -49,5 +49,9 @@ class BankAccount
 
   def overdrawn_past_overdraft_limit?(amount)
     current_balance - amount < @overdraft_limit
+  end
+
+  def print_transaction(transaction)
+    "#{transaction.date.strftime('%d.%m.%Y')} #{transaction.amount}"
   end
 end
