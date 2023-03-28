@@ -30,7 +30,7 @@ class BankAccount
     if @transactions.empty?
       ''
     else
-      "#{@transactions.first.to_s} #{current_balance}"
+      @transactions.map { |t| t.to_s + " " + "#{current_balance}" }.join
     end
   end
 
