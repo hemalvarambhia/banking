@@ -31,8 +31,8 @@ class BankAccount
       ''
     else
       @transactions.to_enum.with_index.map do |t, _|
-        current_balance = @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
-        t.to_s + " " + "#{current_balance}"
+        running_total = @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
+        t.to_s + " " + "#{running_total}"
       end.join
     end
   end
