@@ -32,8 +32,8 @@ describe 'Printing bank statements' do
 
     transaction_lines = bank_account.transaction_lines
 
-    with_two_deposits = ""
-    expect(transaction_lines).to eq(with_two_deposits)
+    with_no_deposits = ""
+    expect(transaction_lines).to eq(with_no_deposits)
   end
 
   example 'a single deposit transaction' do
