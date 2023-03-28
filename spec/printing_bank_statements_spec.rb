@@ -29,7 +29,22 @@ describe 'Printing bank statements' do
 
   example 'when no transactions were made'
 
-  example 'when two deposits are made'
+  example 'when two deposits are made' do
+    pending('TODO')
+    bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
+    bank_account.deposit(5)
+    bank_account.deposit(10)
+
+    statement = bank_account.print_statement
+
+    with_two_deposits =
+      [
+        'Date Amount Balance',
+        "#{Date.today.strftime('%d.%m.%Y')} 5 5",
+        "#{Date.today.strftime('%d.%m.%Y')} 10 15"
+      ].join("\n")
+    expect(statement).to eq(with_two_deposits)
+  end
 
   example 'when two withdrawals are made'
 
