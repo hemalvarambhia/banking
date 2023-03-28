@@ -30,7 +30,10 @@ class BankAccount
     if @transactions.empty?
       ''
     else
-      @transactions.to_enum.with_index.map { |t, _| t.to_s + " " + "#{current_balance}" }.join
+      @transactions.to_enum.with_index.map do |t, _|
+        current_balance = @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
+        t.to_s + " " + "#{current_balance}"
+      end.join
     end
   end
 
