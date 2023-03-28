@@ -27,14 +27,10 @@ class BankAccount
   end
 
   def transaction_lines
-    if @transactions.empty?
-      ''
-    else
-      @transactions.to_enum.with_index.map do |t, _|
-        running_total = @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
-        t.to_s + " " + "#{running_total}"
-      end.join
-    end
+    @transactions.to_enum.with_index.map do |t, _|
+      running_total = @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
+      t.to_s + " " + "#{running_total}"
+    end.join
   end
 
   def print_statement
