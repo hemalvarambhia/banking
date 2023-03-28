@@ -47,6 +47,8 @@ describe 'Printing bank statements' do
     expect(transaction_lines).to eq(with_two_deposits)
   end
 
+  example 'two deposit transactions'
+
   example 'when two deposits are made' do
     pending('TODO')
     bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
