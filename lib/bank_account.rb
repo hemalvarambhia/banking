@@ -26,6 +26,10 @@ class BankAccount
     @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
   end
 
+  def transaction_lines
+    "#{@transactions.last.to_s} #{current_balance}"
+  end
+
   def print_statement
     column_titles = 'Date Amount Balance'
     if @transactions.empty?
