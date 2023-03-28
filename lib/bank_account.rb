@@ -27,7 +27,7 @@ class BankAccount
   end
 
   def transaction_lines
-    "#{@transactions.last.to_s} #{current_balance}"
+    "#{@transactions.first.to_s} #{current_balance}"
   end
 
   def print_statement
