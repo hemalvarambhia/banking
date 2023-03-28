@@ -27,7 +27,14 @@ describe 'Printing bank statements' do
     expect(statement).to eq(with_one_withdrawal)
   end
 
-  example 'when no transactions were made'
+  example 'when no transactions were made' do
+    bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
+
+    transaction_lines = bank_account.transaction_lines
+
+    with_two_deposits = ""
+    expect(transaction_lines).to eq(with_two_deposits)
+  end
 
   example 'a single deposit transaction' do
     bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)

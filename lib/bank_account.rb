@@ -27,7 +27,11 @@ class BankAccount
   end
 
   def transaction_lines
-    "#{@transactions.first.to_s} #{current_balance}"
+    if @transactions.empty?
+      ''
+    else
+      "#{@transactions.first.to_s} #{current_balance}"
+    end
   end
 
   def print_statement
