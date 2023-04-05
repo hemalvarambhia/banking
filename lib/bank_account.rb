@@ -26,7 +26,7 @@ class BankAccount
     @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
   end
 
-  def transaction_lines
+  def statement_lines
     @transactions.to_enum.with_index.map do |t, _|
       running_total = @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
       print_transaction(t) + " " + "#{running_total}"
