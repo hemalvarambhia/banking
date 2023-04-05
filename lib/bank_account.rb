@@ -27,9 +27,9 @@ class BankAccount
   end
 
   def statement_lines
-    @transactions.to_enum.with_index.map do |t, number|
+    @transactions.to_enum.with_index.map do |transaction, number|
       running_total = compute_running_total_up_to(number)
-      print_transaction(t) + " " + "#{running_total}"
+      print_transaction(transaction) + " " + "#{running_total}"
     end.join("\n")
   end
 
