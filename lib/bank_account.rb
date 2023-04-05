@@ -27,10 +27,10 @@ class BankAccount
   end
 
   def statement_lines
-    @transactions.to_enum.with_index.map do |t, _|
-      running_total = @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
+    @transactions.to_enum.with_index.map do |t, number|
+      running_total = @transactions[0..number].inject(0){ |sum, transaction| sum + transaction.amount }
       print_transaction(t) + " " + "#{running_total}"
-    end.join
+    end.join("\n")
   end
 
   def print_statement

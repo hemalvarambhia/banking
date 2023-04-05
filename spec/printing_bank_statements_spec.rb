@@ -20,7 +20,17 @@ describe 'Printing bank statements' do
       expect(transaction_lines).to eq(with_two_deposits)
     end
 
-    example 'two deposit transactions'
+    example 'two deposit transactions' do
+      bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
+      bank_account.deposit(5)
+      bank_account.deposit(5)
+
+      transaction_lines = bank_account.statement_lines
+
+      with_two_deposits = "#{Date.today.strftime('%d.%m.%Y')} 5 5\n#{Date.today.strftime('%d.%m.%Y')} 5 10"
+
+      expect(transaction_lines).to eq(with_two_deposits)
+    end
   end
 
   example 'when only one deposit is made' do
