@@ -28,7 +28,7 @@ class BankAccount
 
   def statement_lines
     @transactions.to_enum.with_index.map do |transaction, number|
-      print_transaction(transaction) + " " + "#{compute_running_total_up_to(number)}"
+      print_transaction(transaction) + " " + "#{running_total_up_to(number)}"
     end.join("\n")
   end
 
@@ -46,7 +46,7 @@ class BankAccount
 
   private
 
-  def compute_running_total_up_to(number)
+  def running_total_up_to(number)
     @transactions[0..number].inject(0) { |sum, transaction| sum + transaction.amount }
   end
 
