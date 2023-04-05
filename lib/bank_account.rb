@@ -28,7 +28,7 @@ class BankAccount
 
   def statement_lines
     @transactions.to_enum.with_index.map do |t, number|
-      running_total = @transactions[0..number].inject(0){ |sum, transaction| sum + transaction.amount }
+      running_total = compute_running_total_up_to(number)
       print_transaction(t) + " " + "#{running_total}"
     end.join("\n")
   end
@@ -46,6 +46,10 @@ class BankAccount
   end
 
   private
+
+  def compute_running_total_up_to(number)
+    @transactions[0..number].inject(0) { |sum, transaction| sum + transaction.amount }
+  end
 
   def overdrawn_past_overdraft_limit?(amount)
     current_balance - amount < @overdraft_limit
