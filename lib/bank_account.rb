@@ -26,12 +26,6 @@ class BankAccount
     @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
   end
 
-  def statement_lines
-    @transactions.map.with_index do |transaction, number|
-      print_transaction(transaction) + " " + "#{running_total_up_to(number)}"
-    end.join("\n")
-  end
-
   def print_statement
     column_titles = 'Date Amount Balance'
     if @transactions.empty?
@@ -44,17 +38,23 @@ class BankAccount
     end
   end
 
+  def statement_lines
+    @transactions.map.with_index do |transaction, number|
+      print_transaction(transaction) + " " + "#{running_total_up_to(number)}"
+    end.join("\n")
+  end
+
   private
 
   def running_total_up_to(number)
     @transactions[0..number].inject(0) { |sum, transaction| sum + transaction.amount }
   end
 
-  def overdrawn_past_overdraft_limit?(amount)
-    current_balance - amount < @overdraft_limit
-  end
-
   def print_transaction(transaction)
     "#{transaction.date.strftime('%d.%m.%Y')} #{transaction.amount}"
+  end
+
+  def overdrawn_past_overdraft_limit?(amount)
+    current_balance - amount < @overdraft_limit
   end
 end
