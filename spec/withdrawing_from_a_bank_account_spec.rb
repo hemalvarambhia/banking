@@ -43,6 +43,7 @@ describe 'Withdrawing from a bank account' do
 
     expected_statement = [
       'Date Amount Balance',
+      "#{Date.today.strftime('%d.%m.%Y')} 100 100",
       "#{Date.today.strftime('%d.%m.%Y')} -50 50"
     ].join("\n")
     expect(account.print_statement).to eq(expected_statement)

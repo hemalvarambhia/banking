@@ -62,7 +62,6 @@ describe 'Printing bank statements' do
   end
 
   example 'when two deposits are made' do
-    pending('TODO')
     bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
     bank_account.deposit(5)
     bank_account.deposit(10)

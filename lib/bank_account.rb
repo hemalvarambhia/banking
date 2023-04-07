@@ -33,7 +33,7 @@ class BankAccount
     else
       [
         column_titles,
-        "#{print_transaction(@transactions.last)} #{current_balance}"
+        statement_lines
       ].join("\n")
     end
   end
