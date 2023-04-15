@@ -39,9 +39,13 @@ class BankAccount
   end
 
   def statement_lines
+    bank_statement_lines.join("\n")
+  end
+
+  def bank_statement_lines
     @transactions.map.with_index do |transaction, number|
       print_transaction(transaction) + " " + "#{running_total_up_to(number)}"
-    end.join("\n")
+    end
   end
 
   private
