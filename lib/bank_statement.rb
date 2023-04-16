@@ -9,8 +9,9 @@ class BankStatement
     end
   end
 
+  private
+
   def print_transaction(transaction)
     "#{transaction.date.strftime('%d.%m.%Y')} #{transaction.amount}"
   end
-
 end
