@@ -1,3 +1,5 @@
+require_relative '../lib/bank_account'
+
 describe 'Withdrawing from a bank account' do
   example 'withdrawing nothing from a bank account' do
     account = BankAccount.new(initial_deposit: 45)
