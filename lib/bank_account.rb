@@ -29,7 +29,7 @@ class BankAccount
 
   def print_statement
     column_titles = 'Date Amount Balance'
-    if @transactions.empty?
+    if no_transactions?
       column_titles
     else
       [
@@ -37,6 +37,10 @@ class BankAccount
         statement_lines
       ].join("\n")
     end
+  end
+
+  def no_transactions?
+    @transactions.empty?
   end
 
   def statement_lines
