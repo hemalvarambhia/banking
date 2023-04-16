@@ -1,7 +1,12 @@
+require_relative '../lib/bank_account'
+require_relative '../lib/bank_statement'
+
 describe 'Printing bank statements' do
   context 'statement lines' do
     example 'when no transactions were made' do
-      bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
+      bank_account = BankStatement.new(
+        BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
+      )
 
       statement_lines = bank_account.bank_statement_lines
 
