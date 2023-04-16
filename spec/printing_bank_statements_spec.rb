@@ -17,7 +17,8 @@ describe 'Printing bank statements' do
       bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
       bank_account.deposit(5)
 
-      statement_lines = bank_account.bank_statement_lines
+      bank_statement = BankStatement.new(bank_account)
+      statement_lines = bank_statement.bank_statement_lines
 
       expect(statement_lines).to eq(["#{Date.today.strftime('%d.%m.%Y')} 5 5"])
     end
