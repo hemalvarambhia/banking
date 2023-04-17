@@ -4,7 +4,6 @@ BankAccountSetUpIncorrectly = Class.new(StandardError)
 class BankAccount
   include Enumerable
 
-  attr_reader :transactions
   def initialize(initial_deposit:, overdraft_limit: -2000)
     raise BankAccountSetUpIncorrectly.new('Cannot open with a negative deposit') if initial_deposit < 0
     @overdraft_limit = overdraft_limit
