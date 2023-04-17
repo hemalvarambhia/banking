@@ -30,7 +30,7 @@ class BankAccount
   end
 
   def current_balance
-    @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
+    inject(0){ |sum, transaction| sum + transaction.amount }
   end
 
   def no_transactions?
