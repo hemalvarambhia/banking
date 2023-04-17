@@ -27,24 +27,8 @@ class BankAccount
     @transactions.inject(0){ |sum, transaction| sum + transaction.amount }
   end
 
-  def print_statement
-    column_titles = 'Date Amount Balance'
-    if no_transactions?
-      column_titles
-    else
-      [
-        column_titles,
-        statement_lines
-      ].join("\n")
-    end
-  end
-
   def no_transactions?
     @transactions.empty?
-  end
-
-  def statement_lines
-    bank_statement_lines.join("\n")
   end
 
   def bank_statement_lines
