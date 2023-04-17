@@ -31,18 +31,8 @@ class BankAccount
     @transactions.empty?
   end
 
-  def bank_statement_lines
-    @transactions.map.with_index do |transaction, number|
-      print_transaction(transaction) + " " + "#{running_total_up_to(number)}"
-    end
-  end
-
   def running_total_up_to(number)
     @transactions[0..number].inject(0) { |sum, transaction| sum + transaction.amount }
-  end
-
-  def print_transaction(transaction)
-    "#{transaction.date.strftime('%d.%m.%Y')} #{transaction.amount}"
   end
 
   private
