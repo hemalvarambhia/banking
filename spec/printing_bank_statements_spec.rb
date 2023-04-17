@@ -37,6 +37,10 @@ describe 'Printing bank statements' do
       ]
       expect(statement_lines).to eq(expected)
     end
+
+    example 'one deposit is made followed by one withdrawal'
+
+    example 'two withdrawal transactions'
   end
 
   example 'when only one deposit is made' do
