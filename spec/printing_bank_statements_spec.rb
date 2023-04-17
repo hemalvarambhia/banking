@@ -28,7 +28,8 @@ describe 'Printing bank statements' do
       bank_account.deposit(5)
       bank_account.deposit(5)
 
-      statement_lines = bank_account.bank_statement_lines
+      bank_statement = BankStatement.new(bank_account)
+      statement_lines = bank_statement.bank_statement_lines
 
       expected = [
         "#{Date.today.strftime('%d.%m.%Y')} 5 5",
