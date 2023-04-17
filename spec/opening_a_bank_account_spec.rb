@@ -1,10 +1,12 @@
 require_relative '../lib/bank_account'
+require_relative '../lib/bank_statement'
 
 describe 'Bank Account' do
   example 'opening a bank account with zero balance' do
     bank_account = BankAccount.new(initial_deposit: 0)
 
-    statement = bank_account.print_statement
+    bank_statement = BankStatement.new(bank_account)
+    statement = bank_statement.print_statement
 
     expected_statement = 'Date Amount Balance'
     expect(statement).to eq(expected_statement)
@@ -13,7 +15,8 @@ describe 'Bank Account' do
   example 'opening a bank account with an initial deposit' do
     bank_account = BankAccount.new(initial_deposit: 20)
 
-    statement = bank_account.print_statement
+    bank_statement = BankStatement.new(bank_account)
+    statement = bank_statement.print_statement
 
     expected_statement = [
       'Date Amount Balance',
@@ -25,7 +28,8 @@ describe 'Bank Account' do
   example 'opening a bank account with any initial deposit' do
     bank_account = BankAccount.new(initial_deposit: 111)
 
-    statement = bank_account.print_statement
+    bank_statement = BankStatement.new(bank_account)
+    statement = bank_statement.print_statement
 
     expected_statement = [
       'Date Amount Balance',
@@ -37,7 +41,8 @@ describe 'Bank Account' do
   example 'opening a bank account with any initial deposit that is not a whole amount' do
     bank_account = BankAccount.new(initial_deposit: 111.12)
 
-    statement = bank_account.print_statement
+    bank_statement = BankStatement.new(bank_account)
+    statement = bank_statement.print_statement
 
     expected_statement = [
       'Date Amount Balance',

@@ -1,4 +1,5 @@
 require_relative '../lib/bank_account'
+require_relative '../lib/bank_statement'
 
 describe 'Bank Account' do
   describe 'depositing into an account' do
@@ -12,7 +13,8 @@ describe 'Bank Account' do
         'Date Amount Balance',
         "#{Date.today.strftime('%d.%m.%Y')} 50 50"
       ].join("\n")
-      expect(account.print_statement).to eq(expected_statement)
+      bank_statement = BankStatement.new(account)
+      expect(bank_statement.print_statement).to eq(expected_statement)
     end
 
     it 'increases the balance on the account when a non-zero amount is deposited' do
@@ -32,7 +34,8 @@ describe 'Bank Account' do
         'Date Amount Balance',
         "#{Date.today.strftime('%d.%m.%Y')} 50 50"
       ].join("\n")
-      expect(account.print_statement).to eq(expected_statement)
+      bank_statement = BankStatement.new(account)
+      expect(bank_statement.print_statement).to eq(expected_statement)
     end
 
     it 'does not allow a negative amount to be deposited into the account' do
