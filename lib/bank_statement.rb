@@ -10,12 +10,12 @@ class BankStatement
     else
       [
         column_titles,
-        bank_statement_lines.join("\n")
+        lines.join("\n")
       ].join("\n")
     end
   end
 
-  def bank_statement_lines
+  def lines
     @bank_account.map.with_index do |transaction, number|
       print_transaction(transaction) + " " + "#{@bank_account.running_total_up_to(number)}"
     end
