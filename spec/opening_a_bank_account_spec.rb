@@ -6,7 +6,7 @@ describe 'Bank Account' do
     bank_account = BankAccount.new(initial_deposit: 0)
 
     bank_statement = BankStatement.new(bank_account)
-    statement = bank_statement.print_statement
+    statement = bank_statement.print
 
     expected_statement = 'Date Amount Balance'
     expect(statement).to eq(expected_statement)
@@ -16,7 +16,7 @@ describe 'Bank Account' do
     bank_account = BankAccount.new(initial_deposit: 20)
 
     bank_statement = BankStatement.new(bank_account)
-    statement = bank_statement.print_statement
+    statement = bank_statement.print
 
     expected_statement = [
       'Date Amount Balance',
@@ -29,7 +29,7 @@ describe 'Bank Account' do
     bank_account = BankAccount.new(initial_deposit: 111)
 
     bank_statement = BankStatement.new(bank_account)
-    statement = bank_statement.print_statement
+    statement = bank_statement.print
 
     expected_statement = [
       'Date Amount Balance',
@@ -42,7 +42,7 @@ describe 'Bank Account' do
     bank_account = BankAccount.new(initial_deposit: 111.12)
 
     bank_statement = BankStatement.new(bank_account)
-    statement = bank_statement.print_statement
+    statement = bank_statement.print
 
     expected_statement = [
       'Date Amount Balance',

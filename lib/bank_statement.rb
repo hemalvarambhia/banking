@@ -3,7 +3,7 @@ class BankStatement
     @bank_account = bank_account
   end
 
-  def print_statement
+  def print
     column_titles = 'Date Amount Balance'
     if @bank_account.no_transactions?
       column_titles

@@ -44,7 +44,7 @@ describe 'Printing bank statements' do
     bank_account.deposit(50)
 
     bank_statement = BankStatement.new(bank_account)
-    statement = bank_statement.print_statement
+    statement = bank_statement.print
 
     with_one_deposit =
       [
@@ -59,7 +59,7 @@ describe 'Printing bank statements' do
     bank_account.withdraw(50)
 
     bank_statement = BankStatement.new(bank_account)
-    statement = bank_statement.print_statement
+    statement = bank_statement.print
 
     with_one_withdrawal =
       [
@@ -75,7 +75,7 @@ describe 'Printing bank statements' do
     bank_account.deposit(10)
 
     bank_statement = BankStatement.new(bank_account)
-    statement = bank_statement.print_statement
+    statement = bank_statement.print
 
     with_two_deposits =
       [

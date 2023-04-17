@@ -50,6 +50,6 @@ describe 'Withdrawing from a bank account' do
       "#{Date.today.strftime('%d.%m.%Y')} -50 50"
     ].join("\n")
     bank_statement = BankStatement.new(account)
-    expect(bank_statement.print_statement).to eq(expected_statement)
+    expect(bank_statement.print).to eq(expected_statement)
   end
 end
