@@ -8,10 +8,7 @@ class BankStatement
     if @bank_account.no_transactions?
       column_titles
     else
-      [
-        column_titles,
-        lines.join("\n")
-      ].join("\n")
+      ([ column_titles ] + lines).join("\n")
     end
   end
 
