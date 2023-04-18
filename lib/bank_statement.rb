@@ -12,7 +12,7 @@ class BankStatement
   def lines
     @bank_account.map.with_index do |transaction, number|
       line = OpenStruct.new(transaction: transaction, balance: balance_as_of(number))
-      "#{print_transaction(line.transaction)} #{line.balance}"
+      "#{print_transaction(line.transaction, line)}"
     end
   end
 
@@ -22,7 +22,7 @@ class BankStatement
     @bank_account.running_total_up_to(number)
   end
 
-  def print_transaction(transaction)
-    "#{transaction.date.strftime('%d.%m.%Y')} #{transaction.amount}"
+  def print_transaction(transaction, line)
+    "#{line.transaction.date.strftime('%d.%m.%Y')} #{line.transaction.amount} #{line.balance}"
   end
 end
