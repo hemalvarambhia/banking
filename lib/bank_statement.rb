@@ -1,3 +1,4 @@
+require 'ostruct'
 class BankStatement
   def initialize(bank_account)
     @bank_account = bank_account
@@ -10,7 +11,8 @@ class BankStatement
 
   def lines
     @bank_account.map.with_index do |transaction, number|
-      "#{print_transaction(transaction)} #{balance_as_of(number)}"
+      line = OpenStruct.new(transaction: transaction, balance: balance_as_of(number))
+      "#{print_transaction(line.transaction)} #{line.balance}"
     end
   end
 
