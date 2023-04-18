@@ -10,7 +10,7 @@ class BankStatement
 
   def lines
     @bank_account.map.with_index do |transaction, number|
-      print_transaction(transaction) + " " + "#{balance_as_of(number)}"
+      "#{print_transaction(transaction)} #{balance_as_of(number)}"
     end
   end
 
