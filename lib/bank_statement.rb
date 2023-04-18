@@ -6,7 +6,7 @@ class BankStatement
   def print
     column_titles = 'Date Amount Balance'
     if @bank_account.no_transactions?
-      column_titles
+      ([ column_titles ] + lines).join("\n")
     else
       ([ column_titles ] + lines).join("\n")
     end
