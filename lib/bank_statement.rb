@@ -1,5 +1,6 @@
 require 'ostruct'
 class BankStatement
+  StatementLine = Data.define(:transaction, :balance)
   def initialize(bank_account)
     @bank_account = bank_account
   end
@@ -11,7 +12,7 @@ class BankStatement
 
   def lines
     @bank_account.map.with_index do |transaction, number|
-      line = OpenStruct.new(transaction: transaction, balance: balance_as_of(number))
+      line = StatementLine.new(transaction: transaction, balance: balance_as_of(number))
       "#{print_transaction(line.transaction, line)}"
     end
   end
