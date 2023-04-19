@@ -103,7 +103,21 @@ describe 'Printing bank statements' do
     expect(statement).to eq(with_two_deposits)
   end
 
-  example 'when two withdrawals are made'
+  example 'when two withdrawals are made' do
+    bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
+    bank_account.withdraw(51)
+    bank_account.withdraw(11)
+
+    bank_statement = BankStatement.new(bank_account)
+    statement = bank_statement.print
+
+    two_withdrawals = [
+      'Date Amount Balance',
+      "#{Date.today.strftime('%d.%m.%Y')} -51 -51",
+      "#{Date.today.strftime('%d.%m.%Y')} -11 -62"
+    ].join("\n")
+    expect(statement).to eq(two_withdrawals)
+  end
 
   example 'when a deposit is followed by a withdrawal'
 end
