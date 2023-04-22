@@ -62,7 +62,7 @@ describe 'Printing bank statements' do
       statement_lines = bank_statement.lines
 
       two_withdrawals = [
-        "#{Date.today.strftime('%d.%m.%Y')} -12.5 -12.5",
+        "#{Date.today.strftime('%d.%m.%Y')} -12.50 -12.50",
         "#{Date.today.strftime('%d.%m.%Y')} -5.75 -18.25"
       ]
       expect(statement_lines).to eq(two_withdrawals)
