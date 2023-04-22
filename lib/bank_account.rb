@@ -32,10 +32,6 @@ class BankAccount
     inject(0){ |sum, transaction| sum + transaction.amount }
   end
 
-  def no_transactions?
-    @transactions.empty?
-  end
-
   def running_total_up_to(number)
     @transactions[0..number].inject(0) { |sum, transaction| sum + transaction.amount }
   end
