@@ -24,6 +24,6 @@ class BankStatement
   end
 
   def print_transaction(line)
-    "#{line.transaction.date.strftime('%d.%m.%Y')} %0.2f %0.2f" % [Money.new(line.transaction.amount), line.balance]
+    "#{line.transaction.date.strftime('%d.%m.%Y')} #{Money.new(line.transaction.amount)} %0.2f" % [line.balance]
   end
 end
