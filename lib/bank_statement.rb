@@ -1,4 +1,3 @@
-require 'ostruct'
 class BankStatement
   StatementLine = Data.define(:transaction, :balance)
   def initialize(bank_account)
