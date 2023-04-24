@@ -40,14 +40,14 @@ describe 'Withdrawing from a bank account' do
   end
 
   it 'writes the withdrawal transaction to the bank statement' do
-    account = BankAccount.new(initial_deposit: 100)
+    account = BankAccount.new(initial_deposit: 100.00)
 
-    account.withdraw(50)
+    account.withdraw(50.00)
 
     expected_statement = [
       'Date Amount Balance',
-      "#{Date.today.strftime('%d.%m.%Y')} 100 100",
-      "#{Date.today.strftime('%d.%m.%Y')} -50 50"
+      "#{Date.today.strftime('%d.%m.%Y')} 100.00 100.00",
+      "#{Date.today.strftime('%d.%m.%Y')} -50.00 50.00"
     ].join("\n")
     bank_statement = BankStatement.new(account)
     expect(bank_statement.print).to eq(expected_statement)

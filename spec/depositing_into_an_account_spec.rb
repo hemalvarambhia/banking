@@ -4,14 +4,14 @@ require_relative '../lib/bank_statement'
 describe 'Bank Account' do
   describe 'depositing into an account' do
     it 'does not increase the balance on the account with nothing is deposited' do
-      account = BankAccount.new(initial_deposit: 50)
+      account = BankAccount.new(initial_deposit: 50.00)
 
       account.deposit(0)
 
-      expect(account.current_balance).to eq(50)
+      expect(account.current_balance).to eq(50.00)
       expected_statement = [
         'Date Amount Balance',
-        "#{Date.today.strftime('%d.%m.%Y')} 50 50"
+        "#{Date.today.strftime('%d.%m.%Y')} 50.00 50.00"
       ].join("\n")
       bank_statement = BankStatement.new(account)
       expect(bank_statement.print).to eq(expected_statement)
@@ -28,11 +28,11 @@ describe 'Bank Account' do
     it 'writes the deposit transaction to the bank statement' do
       account = BankAccount.new(initial_deposit: 0)
 
-      account.deposit(50)
+      account.deposit(50.00)
 
       expected_statement = [
         'Date Amount Balance',
-        "#{Date.today.strftime('%d.%m.%Y')} 50 50"
+        "#{Date.today.strftime('%d.%m.%Y')} 50.00 50.00"
       ].join("\n")
       bank_statement = BankStatement.new(account)
       expect(bank_statement.print).to eq(expected_statement)

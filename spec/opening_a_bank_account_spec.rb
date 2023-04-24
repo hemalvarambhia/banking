@@ -13,27 +13,27 @@ describe 'Bank Account' do
   end
 
   example 'opening a bank account with an initial deposit' do
-    bank_account = BankAccount.new(initial_deposit: 20)
+    bank_account = BankAccount.new(initial_deposit: 20.00)
 
     bank_statement = BankStatement.new(bank_account)
     statement = bank_statement.print
 
     expected_statement = [
       'Date Amount Balance',
-      "#{Date.today.strftime('%d.%m.%Y')} 20 20"
+      "#{Date.today.strftime('%d.%m.%Y')} 20.00 20.00"
     ].join("\n")
     expect(statement).to eq(expected_statement)
   end
 
   example 'opening a bank account with any initial deposit' do
-    bank_account = BankAccount.new(initial_deposit: 111)
+    bank_account = BankAccount.new(initial_deposit: 111.00)
 
     bank_statement = BankStatement.new(bank_account)
     statement = bank_statement.print
 
     expected_statement = [
       'Date Amount Balance',
-      "#{Date.today.strftime('%d.%m.%Y')} 111 111"
+      "#{Date.today.strftime('%d.%m.%Y')} 111.00 111.00"
     ].join("\n")
     expect(statement).to eq(expected_statement)
   end
