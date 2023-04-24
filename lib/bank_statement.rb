@@ -1,3 +1,4 @@
+require 'money'
 class BankStatement
   StatementLine = Data.define(:transaction, :balance)
   def initialize(bank_account)
@@ -23,6 +24,6 @@ class BankStatement
   end
 
   def print_transaction(line)
-    "#{line.transaction.date.strftime('%d.%m.%Y')} %0.2f %0.2f" % [line.transaction.amount, line.balance]
+    "#{line.transaction.date.strftime('%d.%m.%Y')} %0.2f %0.2f" % [Money.new(line.transaction.amount), line.balance]
   end
 end
