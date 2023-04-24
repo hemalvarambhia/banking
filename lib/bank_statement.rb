@@ -24,10 +24,6 @@ class BankStatement
   end
 
   def print_transaction(line)
-    if line.transaction.amount.is_a?(Float)
-      "#{line.transaction.date.strftime('%d.%m.%Y')} %0.2f %0.2f" % [line.transaction.amount, line.balance]
-    else
-      "#{line.transaction.date.strftime('%d.%m.%Y')} #{line.transaction.amount} #{line.balance}"
-    end
+    "#{line.transaction.date.strftime('%d.%m.%Y')} %0.2f %0.2f" % [line.transaction.amount, line.balance]
   end
 end
