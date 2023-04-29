@@ -1,5 +1,6 @@
 require_relative '../lib/bank_account'
 require_relative '../lib/bank_statement'
+require_relative '../lib/money'
 
 describe 'Withdrawing from a bank account' do
   example 'withdrawing nothing from a bank account' do
