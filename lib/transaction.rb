@@ -2,7 +2,11 @@ class Transaction
   attr_reader :amount, :date
   def initialize(date:, amount:)
     @date = date
-    @amount = amount
+    @amount = Money.new(amount)
+  end
+
+  def amount
+    @amount.value.to_f
   end
 
   def to_s
