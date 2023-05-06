@@ -5,7 +5,7 @@ class Money
   end
 
   def <(amount)
-    @value < amount.value
+    @value < amount
   end
 
   def to_s
