@@ -1,5 +1,6 @@
 require 'date'
 require 'transaction'
+require 'money'
 BankAccountSetUpIncorrectly = Class.new(StandardError)
 class BankAccount
   include Enumerable
