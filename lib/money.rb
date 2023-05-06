@@ -11,4 +11,8 @@ class Money
   def to_s
     "%0.2f" % @value
   end
+
+  def inspect
+    "%0.2f" % @value
+  end
 end
