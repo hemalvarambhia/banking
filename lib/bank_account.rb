@@ -8,7 +8,7 @@ class BankAccount
     raise BankAccountSetUpIncorrectly.new('Cannot open with a negative deposit') if initial_deposit < 0
     @overdraft_limit = overdraft_limit
     @transactions = []
-    @transactions << Transaction.new(date: Date.today, amount: initial_deposit) if initial_deposit > 0
+    @transactions << Transaction.new(date: Date.today, amount: initial_deposit, value: Money.new(initial_deposit.to_f)) if initial_deposit > 0
   end
 
   def each(&block)
@@ -18,14 +18,14 @@ class BankAccount
   def deposit(amount)
     raise StandardError.new('Cannot deposit a negative amount') if amount < 0
 
-    @transactions << Transaction.new(date: Date.today, amount: amount) if amount > 0
+    @transactions << Transaction.new(date: Date.today, amount: amount, value: Money.new(amount.to_f)) if amount > 0
   end
 
   def withdraw(amount)
     raise StandardError.new('Cannot withdraw a negative amount of money') if amount < 0
     raise StandardError.new('Account is past its overdraft limit') if overdrawn_past_overdraft_limit?(amount)
 
-    @transactions << Transaction.new(date: Date.today, amount: -amount)
+    @transactions << Transaction.new(date: Date.today, amount: -amount, value: Money.new(-amount.to_f))
   end
 
   def current_balance

@@ -1,6 +1,6 @@
 class Transaction
   attr_reader :amount, :date
-  def initialize(date:, amount:)
+  def initialize(date:, amount:, value: nil)
     @date = date
     @amount = Money.new(amount)
   end
