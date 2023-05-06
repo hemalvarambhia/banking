@@ -30,11 +30,15 @@ class BankAccount
   end
 
   def current_balance
-    inject(0){ |sum, transaction| sum + transaction.amount }
+    Money.new(
+      inject(0){ |sum, transaction| sum + transaction.amount }
+    ).value
   end
 
   def running_total_up_to(number)
-    @transactions[0..number].inject(0) { |sum, transaction| sum + transaction.amount }
+    Money.new(
+      @transactions[0..number].inject(0) { |sum, transaction| sum + transaction.amount }
+    ).value
   end
 
   private
