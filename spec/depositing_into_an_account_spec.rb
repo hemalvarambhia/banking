@@ -8,7 +8,7 @@ describe 'Bank Account' do
 
       account.deposit(0)
 
-      expect(account.current_balance).to eq(50.00)
+      expect(account.current_balance.to_f).to eq(50.00)
       expected_statement = [
         'Date Amount Balance',
         "#{Date.today.strftime('%d.%m.%Y')} 50.00 50.00"
@@ -22,7 +22,7 @@ describe 'Bank Account' do
 
       account.deposit(50)
 
-      expect(account.current_balance).to eq(50)
+      expect(account.current_balance.to_f).to eq(50)
     end
 
     it 'writes the deposit transaction to the bank statement' do

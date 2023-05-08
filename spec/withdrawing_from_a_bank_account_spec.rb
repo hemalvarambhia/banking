@@ -7,7 +7,7 @@ describe 'Withdrawing from a bank account' do
 
     account.withdraw(0.0)
 
-    expect(account.current_balance).to eq(45.00)
+    expect(account.current_balance.to_f).to eq(45.00)
   end
 
   example 'withdrawing an amount from a bank account' do
@@ -16,7 +16,7 @@ describe 'Withdrawing from a bank account' do
     account.deposit(100)
     account.withdraw(50)
 
-    expect(account.current_balance).to eq(50)
+    expect(account.current_balance.to_f).to eq(50)
   end
 
   example 'withdrawing a negative amount from a bank account' do
@@ -30,7 +30,7 @@ describe 'Withdrawing from a bank account' do
 
     overdrawn_account.withdraw(200)
 
-    expect(overdrawn_account.current_balance).to eq(-100)
+    expect(overdrawn_account.current_balance.to_f).to eq(-100)
   end
 
   example 'becoming overdrawn past the overdraft limit' do
