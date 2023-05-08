@@ -7,7 +7,7 @@ class BankAccount
 
   def initialize(initial_deposit:, overdraft_limit: -2000)
     raise BankAccountSetUpIncorrectly.new('Cannot open with a negative deposit') if initial_deposit < 0
-    @overdraft_limit = overdraft_limit
+    @overdraft_limit = Money.new(overdraft_limit.to_f)
     @transactions = []
     @transactions << Transaction.new(date: Date.today, value: Money.new(initial_deposit.to_f)) if initial_deposit > 0
   end
@@ -44,6 +44,6 @@ class BankAccount
   private
 
   def overdrawn_past_overdraft_limit?(amount)
-    (current_balance + Money.new(-amount.value)).value < @overdraft_limit
+    (current_balance + Money.new(-amount.value)) < @overdraft_limit
   end
 end
