@@ -10,7 +10,11 @@ describe 'Money' do
     expect(total.value).to eq(10.50)
   end
 
-  example 'we can add a positive amount of money to a negative one and get a positive total'
+  example 'we can add a positive amount of money to a negative one and get a positive total' do
+    total = Money.new(6.50) + Money.new(-1.10)
+
+    expect(total.value).to eq(5.40)
+  end
 
   example 'we can add a positive amount of money to a negative one and get a negative total'
 

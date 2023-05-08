@@ -9,7 +9,7 @@ class Money
   end
 
   def +(money)
-    Money.new(10.50)
+    Money.new(@value + money.value)
   end
 
   def to_s
