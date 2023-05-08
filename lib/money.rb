@@ -5,11 +5,7 @@ class Money
   end
 
   def <(amount)
-    if amount.is_a?(Money)
-      @value < amount.value
-    else
-      @value < amount
-    end
+    @value < amount.value
   end
 
   def +(money)
