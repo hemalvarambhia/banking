@@ -44,6 +44,6 @@ class BankAccount
   private
 
   def overdrawn_past_overdraft_limit?(amount)
-    current_balance - amount.value < @overdraft_limit
+    current_balance + Money.new(-amount.value).value < @overdraft_limit
   end
 end
