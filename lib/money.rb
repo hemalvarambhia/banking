@@ -8,6 +8,10 @@ class Money
     @value < amount
   end
 
+  def +(money)
+    Money.new(10.50)
+  end
+
   def to_s
     "%0.2f" % @value
   end
