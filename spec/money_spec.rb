@@ -4,6 +4,10 @@ describe 'Money' do
     expect(Money.new(5.00)).to be < 6.51
   end
 
+  example 'an amount of money being less than another number' do
+    expect(Money.new(5.00)).to be < Money.new(10.99)
+  end
+
   example 'we can add two positive amounts of money' do
     total = Money.new(4.50) + Money.new(6.00)
 
