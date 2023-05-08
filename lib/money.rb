@@ -12,6 +12,10 @@ class Money
     Money.new(@value + money.value)
   end
 
+  def to_f
+    @value.to_f
+  end
+
   def to_s
     "%0.2f" % @value
   end
