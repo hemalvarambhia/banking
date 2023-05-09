@@ -1,7 +1,7 @@
 class Money
   attr_reader :value
   def initialize(value)
-    @value = value
+    @value = value.round(2)
   end
 
   def <(amount)
