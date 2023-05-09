@@ -6,7 +6,7 @@ class Transaction
   end
 
   def amount
-    @amount.value.to_f
+    @amount.to_f
   end
 
   def to_s
