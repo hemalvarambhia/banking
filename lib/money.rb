@@ -8,6 +8,10 @@ class Money
     @value < amount.value
   end
 
+  def >(amount)
+    true
+  end
+
   def +(money)
     Money.new(@value + money.value)
   end

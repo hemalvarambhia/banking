@@ -8,6 +8,10 @@ describe 'Money' do
     example 'an amount of money is not less than another of the same amount' do
       expect(Money.new(12.01)).not_to be < Money.new(12.01)
     end
+
+    example 'an amount of money being bigger than another' do
+      expect(Money.new(13.99)).to be > Money.new(0.65)
+    end
   end
 
   describe 'adding money' do
