@@ -1,5 +1,5 @@
 name: run-automated-tests
-run-name: ${{ github.actor }} is using GitHub Actions to run tests
+run-name: Run programmer tests for the kata
 on: [push]
 jobs:
   run-tests:
