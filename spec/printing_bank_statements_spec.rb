@@ -1,3 +1,4 @@
+require_relative '../lib/money'
 require_relative '../lib/bank_account'
 require_relative '../lib/bank_statement'
 
@@ -15,7 +16,7 @@ describe 'Printing bank statements' do
 
     example 'a single deposit transaction' do
       bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
-      bank_account.deposit(5.00)
+      bank_account.deposit(5.00, Money.new(5.00))
 
       bank_statement = BankStatement.new(bank_account)
       statement_lines = bank_statement.lines
@@ -25,8 +26,8 @@ describe 'Printing bank statements' do
 
     example 'two deposit transactions' do
       bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
-      bank_account.deposit(5.00)
-      bank_account.deposit(5.00)
+      bank_account.deposit(5.00, Money.new(5.00))
+      bank_account.deposit(5.00, Money.new(5.00))
 
       bank_statement = BankStatement.new(bank_account)
       statement_lines = bank_statement.lines
@@ -40,7 +41,7 @@ describe 'Printing bank statements' do
 
     example 'one deposit is made followed by one withdrawal' do
       bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
-      bank_account.deposit(50.00)
+      bank_account.deposit(50.00, Money.new(50.00))
       bank_account.withdraw(5.00)
 
       bank_statement = BankStatement.new(bank_account)
@@ -71,7 +72,7 @@ describe 'Printing bank statements' do
 
   example 'when only one deposit is made' do
     bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
-    bank_account.deposit(50.00)
+    bank_account.deposit(50.00, Money.new(50.00))
 
     bank_statement = BankStatement.new(bank_account)
     statement = bank_statement.print
@@ -101,8 +102,8 @@ describe 'Printing bank statements' do
 
   example 'when two deposits are made' do
     bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
-    bank_account.deposit(5.00)
-    bank_account.deposit(10.00)
+    bank_account.deposit(5.00, Money.new(5.00))
+    bank_account.deposit(10.00, Money.new(10.00))
 
     bank_statement = BankStatement.new(bank_account)
     statement = bank_statement.print
@@ -134,7 +135,7 @@ describe 'Printing bank statements' do
 
   example 'when a deposit is followed by a withdrawal' do
     bank_account = BankAccount.new(initial_deposit: 0, overdraft_limit: -2000)
-    bank_account.deposit(512.00)
+    bank_account.deposit(512.00, Money.new(512.00))
     bank_account.withdraw(11.00)
 
     bank_statement = BankStatement.new(bank_account)
