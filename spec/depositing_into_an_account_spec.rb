@@ -1,3 +1,4 @@
+require_relative '../lib/money'
 require_relative '../lib/bank_account'
 require_relative '../lib/bank_statement'
 
@@ -6,7 +7,7 @@ describe 'Bank Account' do
     it 'does not increase the balance on the account with nothing is deposited' do
       account = BankAccount.new(initial_deposit: 50.00)
 
-      account.deposit(0)
+      account.deposit(0, Money.new(0))
 
       expect(account.current_balance.to_f).to eq(50.00)
       expected_statement = [
@@ -20,7 +21,7 @@ describe 'Bank Account' do
     it 'increases the balance on the account when a non-zero amount is deposited' do
       account = BankAccount.new(initial_deposit: 0)
 
-      account.deposit(50)
+      account.deposit(50, Money.new(50.00))
 
       expect(account.current_balance.to_f).to eq(50)
     end
@@ -28,7 +29,7 @@ describe 'Bank Account' do
     it 'writes the deposit transaction to the bank statement' do
       account = BankAccount.new(initial_deposit: 0)
 
-      account.deposit(50.00)
+      account.deposit(50.00, Money.new(50.00))
 
       expected_statement = [
         'Date Amount Balance',
@@ -41,7 +42,7 @@ describe 'Bank Account' do
     it 'does not allow a negative amount to be deposited into the account' do
       account = BankAccount.new(initial_deposit: 0)
 
-      expect { account.deposit(-50) }.to raise_error('Cannot deposit a negative amount')
+      expect { account.deposit(-50, Money.new(-50.00)) }.to raise_error('Cannot deposit a negative amount')
     end
   end
 end
