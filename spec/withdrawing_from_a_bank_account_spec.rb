@@ -14,7 +14,7 @@ describe 'Withdrawing from a bank account' do
   example 'withdrawing an amount from a bank account' do
     account = BankAccount.new(initial_deposit: 0)
 
-    account.deposit(100, Money.new(100))
+    account.deposit_money(Money.new(100))
     account.withdraw(50)
 
     expect(account.current_balance.to_f).to eq(50)
