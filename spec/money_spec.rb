@@ -32,5 +32,9 @@ describe 'Money' do
     expect(total.value).to eq(0.00)
   end
 
-  example 'we can add two negative amounts of money'
+  example 'we can add two negative amounts of money' do
+    total = Money.new(-5.11) + Money.new(-0.02)
+
+    expect(total.value).to eq(-5.13)
+  end
 end
