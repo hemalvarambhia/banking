@@ -6,7 +6,7 @@ describe 'Withdrawing from a bank account' do
   example 'withdrawing nothing from a bank account' do
     account = BankAccount.new(initial_deposit: 45.00)
 
-    account.withdraw(0.0)
+    account.withdraw(0.0, monetary_amount: Money.new(0.00))
 
     expect(account.current_balance.to_f).to eq(45.00)
   end
@@ -15,7 +15,7 @@ describe 'Withdrawing from a bank account' do
     account = BankAccount.new(initial_deposit: 0)
 
     account.deposit_money(Money.new(100))
-    account.withdraw(50)
+    account.withdraw(50, monetary_amount: Money.new(50.00))
 
     expect(account.current_balance.to_f).to eq(50)
   end
@@ -29,7 +29,7 @@ describe 'Withdrawing from a bank account' do
   example 'becoming overdrawn' do
     overdrawn_account = BankAccount.new(initial_deposit: 100, overdraft_limit: -2000)
 
-    overdrawn_account.withdraw(200)
+    overdrawn_account.withdraw(200, monetary_amount: Money.new(200.00))
 
     expect(overdrawn_account.current_balance.to_f).to eq(-100)
   end
@@ -37,13 +37,13 @@ describe 'Withdrawing from a bank account' do
   example 'becoming overdrawn past the overdraft limit' do
     overdrawn_account = BankAccount.new(initial_deposit: 100, overdraft_limit: -50)
 
-    expect { overdrawn_account.withdraw(200) }.to raise_error('Account is past its overdraft limit')
+    expect { overdrawn_account.withdraw(200, monetary_amount: Money.new(200.00)) }.to raise_error('Account is past its overdraft limit')
   end
 
   it 'writes the withdrawal transaction to the bank statement' do
     account = BankAccount.new(initial_deposit: 100.00)
 
-    account.withdraw(50.00)
+    account.withdraw(50.00, monetary_amount: Money.new(50.00))
 
     expected_statement = [
       'Date Amount Balance',
