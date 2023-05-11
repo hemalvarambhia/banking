@@ -9,7 +9,7 @@ class Money
   end
 
   def >(amount)
-    true
+    @value > amount.value
   end
 
   def +(money)
