@@ -8,8 +8,4 @@ class Transaction
   def amount
     @amount.to_f
   end
-
-  def to_s
-    "#{@date.strftime('%d.%m.%Y')} #{@amount}"
-  end
 end
