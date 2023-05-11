@@ -1,11 +1,13 @@
 require_relative '../lib/money'
 describe 'Money' do
-  example 'an amount of money being less than another number' do
-    expect(Money.new(5.00)).to be < Money.new(10.99)
-  end
+  describe 'comparing money' do
+    example 'an amount of money being less than another number' do
+      expect(Money.new(5.00)).to be < Money.new(10.99)
+    end
 
-  example 'an amount of money is not less than another of the same amount' do
-    expect(Money.new(12.01)).not_to be < Money.new(12.01)
+    example 'an amount of money is not less than another of the same amount' do
+      expect(Money.new(12.01)).not_to be < Money.new(12.01)
+    end
   end
 
   example 'we can add two positive amounts of money' do
