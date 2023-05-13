@@ -22,7 +22,7 @@ class BankAccount
     @transactions << Transaction.new(date: Date.today, value: amount) if amount > Money.new(0)
   end
 
-  def withdraw(amount = nil, monetary_amount: Money.new(amount.to_f))
+  def withdraw(monetary_amount:)
     raise StandardError.new('Cannot withdraw a negative amount of money') if monetary_amount < Money.new(0)
     raise StandardError.new('Account is past its overdraft limit') if overdrawn_past_overdraft_limit?(monetary_amount)
 
